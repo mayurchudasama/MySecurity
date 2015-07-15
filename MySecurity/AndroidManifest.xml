@@ -6,13 +6,13 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="21" />
+        android:targetSdkVersion="18" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@android:style/Theme.Black.NoTitleBar" >
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -22,6 +22,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".ScreenReceiver">
+            <!-- android:permission="android.permission.RECEIVE_BOOT_COMPLETED" --> 
+            <intent-filter>
+                <!-- <action android:name="android.intent.action.SCREEN_OFF" />
+                <action android:name="android.intent.action.SCREEN_ON" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" /> -->
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

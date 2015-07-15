@@ -1,16 +1,28 @@
 package com.example.mysecurity;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity implements OnClickListener {
+
+	EditText edtPassword;
+	Button btnAccess, btnExit;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.main);
+		edtPassword = (EditText) findViewById(R.id.edtPassword);
+		findViewById(R.id.btnAccess).setOnClickListener(this);
+		findViewById(R.id.btnExit).setOnClickListener(this);
 	}
 
 	@Override
@@ -30,5 +42,22 @@ public class MainActivity extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch (v.getId()) {
+		case R.id.btnAccess:
+				if(edtPassword.getText().toString().equalsIgnoreCase("mayur"))
+					this.finish();
+				else 
+					Toast.makeText(this, "try again", Toast.LENGTH_LONG).show();
+			break;
+
+		default:
+			break;
+		}
+
 	}
 }
